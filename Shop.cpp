@@ -103,7 +103,7 @@ void Shop::Sell()
 	}
 }
 
-void Shop::Buy()//Compra
+void Shop::Buy()
 {
 	cout << " |Buy|" << e;
 	Num = 1;
