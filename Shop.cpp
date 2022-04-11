@@ -188,7 +188,7 @@ void Shop::ShopF()
 
 }
 
-void Shop::Cart()//Carrito de comprar
+void Shop::Cart()
 {
 	cout << " |Cart|" << e;
 	Num = 1;
