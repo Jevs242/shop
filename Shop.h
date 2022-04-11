@@ -12,11 +12,11 @@ using namespace std;
 
 class Shop {
 private:
-	int Opc = 0, Var, CounterA = 0, Num = 1, CounterB = 5, CounterC = 0, CounterD = 0, NumB;
-	string UsernameA[5], PasswordA[5], ProductA[8]{ "Keyboard" , "Mouse" , "Monitor" , "PC" , "Headset" }, CartC[5];
-	string UsernameB, PasswordB, ProductB;
-	float PriceA[8]{ 40 , 20 , 200 , 100 , 50 };
-	float PriceB, CartA[5], CartB, Total = 0;
+	int opc = 0, var, counterA = 0, num = 1, counterB = 5, counterC = 0, counterD = 0, numB;
+	string usernameA[5], passwordA[5], productA[8]{ "Keyboard" , "Mouse" , "Monitor" , "PC" , "Headset" }, cartC[5];
+	string usernameB, passwordB, productB;
+	float priceA[8]{ 40 , 20 , 200 , 100 , 50 };
+	float priceB, cartA[5], cartB, total = 0;
 
 
 public:

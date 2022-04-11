@@ -20,10 +20,10 @@ void Shop::Menu()
 		cout << setw(30) << "Shop Online\n\n";
 		cout << "....................Menu...................." << e;
 		cout << "1.Login | 2.Create Account | 3.Exit" << e;
-		cin >> Opc;
+		cin >> opc;
 		system("cls");
 
-		switch (Opc)
+		switch (opc)
 		{
 		case 1:
 			Login();
@@ -38,14 +38,14 @@ void Shop::Menu()
 
 			break;
 		}
-	} while (Opc != 3);
+	} while (opc != 3);
 }
 
 void Shop::Login()
 {
 	cout << " |Login| " << e;
 
-	if (CounterA < 1)
+	if (counterA < 1)
 	{
 		system("cls");
 		cout << "You haven't yet created an account\nCreate an account\n" << e;
@@ -53,12 +53,12 @@ void Shop::Login()
 	else
 	{
 		cout << "Enter your username" << e;
-		cin >> UsernameB;
+		cin >> usernameB;
 		cout << "Enter your password" << e;
-		cin >> PasswordB;
-		Var = Verification();
+		cin >> passwordB;
+		var = Verification();
 		system("cls");
-		if (Var > -1)
+		if (var > -1)
 		{
 			ShopF();
 		}
@@ -73,13 +73,13 @@ void Shop::Login()
 void Shop::CreateAccount()
 {
 	cout << " |Create Account| " << e;
-	if (CounterA < 3)
+	if (counterA < 3)
 	{
 		cout << "Enter a Username" << e;
-		cin >> UsernameA[CounterA];
+		cin >> usernameA[counterA];
 		cout << "Enter a Password" << e;
-		cin >> PasswordA[CounterA];
-		CounterA++;
+		cin >> passwordA[counterA];
+		counterA++;
 	}
 	system("cls");
 }
@@ -87,13 +87,13 @@ void Shop::CreateAccount()
 void Shop::Sell()
 {
 	cout << " |Sell|" << e;
-	if (CounterB < 7)
+	if (counterB < 7)
 	{
 		cout << "Enter a product do you wish to sell" << e;
-		cin >> ProductA[CounterB];
+		cin >> productA[counterB];
 		cout << "Enter a price on the product" << e;
-		cin >> PriceA[CounterB];
-		CounterB++;
+		cin >> priceA[counterB];
+		counterB++;
 		system("cls");
 	}
 	else
@@ -103,25 +103,25 @@ void Shop::Sell()
 	}
 }
 
-void Shop::Buy()
+void Shop::Buy()//Compra
 {
 	cout << " |Buy|" << e;
-	Num = 1;
+	num = 1;
 	cout << "#" << setw(14) << "Product" << setw(14) << "Price" << e;
-	for (int i = 0; i < CounterB; i++)
+	for (int i = 0; i < counterB; i++)
 	{
-		cout << Num << "." << setw(13) << ProductA[i] << setw(13) << "$" << PriceA[i] << e;
-		Num++;
+		cout << num << "." << setw(13) << productA[i] << setw(13) << "$" << priceA[i] << e;
+		num++;
 	}
 	cout << "What do you want to buy?" << e;
-	cin >> CounterC;
+	cin >> counterC;
 	{
-		CartB = PriceA[CounterC - 1];
-		CartC[CounterD] = ProductA[CounterC - 1];
-		CartA[CounterD] = PriceA[CounterC - 1];
-		CounterD++;
+		cartB = priceA[counterC - 1];
+		cartC[counterD] = productA[counterC - 1];
+		cartA[counterD] = priceA[counterC - 1];
+		counterD++;
 	}
-	Total += CartB;
+	total += cartB;
 	system("cls");
 }
 
@@ -132,9 +132,9 @@ void Shop::Default()
 
 int Shop::Verification()
 {
-	for (int i = 0; i < CounterA; i++)
+	for (int i = 0; i < counterA; i++)
 	{
-		if (UsernameB == UsernameA[i] && PasswordB == PasswordA[i])
+		if (usernameB == usernameA[i] && passwordB == passwordA[i])
 		{
 			return i;
 			break;
@@ -153,13 +153,13 @@ void Shop::Exit()
 
 void Shop::ShopF()
 {
-	cout << setw(28) << " |Welcome " << UsernameA[Var] << "|" << e;
-	Opc++;
+	cout << setw(28) << " |Welcome " << usernameA[var] << "|" << e;
+	opc++;
 	do {
-		cout << setw(28) << " Conected to " << " " << UsernameA[Var] << e;
-		cout << "1.Buy | 2.Sell | 3.Cart" "(" << CounterD << ") | ""4.Logout | 5.Exit" << e;
-		cin >> Opc;
-		switch (Opc)
+		cout << setw(28) << " Conected to " << " " << usernameA[var] << e;
+		cout << "1.Buy | 2.Sell | 3.Cart" "(" << counterD << ") | ""4.Logout | 5.Exit" << e;
+		cin >> opc;
+		switch (opc)
 		{
 		case 1:
 			Buy();
@@ -183,24 +183,24 @@ void Shop::ShopF()
 			Default();
 			break;
 		}
-	} while (Opc != 5);
+	} while (opc != 5);
 
 
 }
 
-void Shop::Cart()
+void Shop::Cart()//Carrito de comprar
 {
 	cout << " |Cart|" << e;
-	Num = 1;
-	if (CounterD > 0)
+	num = 1;
+	if (counterD > 0)
 	{
-		for (int i = 0; i < CounterD; i++)
+		for (int i = 0; i < counterD; i++)
 		{
-			cout << Num << "." << setw(13) << CartA[i] << "$" << setw(13) << CartC[i] << e;
-			Num++;
+			cout << num << "." << setw(13) << cartA[i] << "$" << setw(13) << cartC[i] << e;
+			num++;
 
 		}
-		cout << "\n" << "The total amount payable is: " << setw(7) << "$" << Total << e;
+		cout << "\n" << "The total amount payable is: " << setw(7) << "$" << total << e;
 		cout << "1.Pay" "  |  "  "2.Continue Shopping" << e;
 	}
 	else
@@ -209,9 +209,9 @@ void Shop::Cart()
 		cout << "You have nothing in the cart" << e;
 		ShopF();
 	}
-	cin >> Opc;
+	cin >> opc;
 	system("cls");
-	switch (Opc)
+	switch (opc)
 	{
 	case 1:
 
@@ -219,8 +219,8 @@ void Shop::Cart()
 		cout << "Paying...\n";
 		system("cls");
 		cout << "...Your payment has been successfully completed..." << e;
-		Total = 0;
-		CounterD = 0;
+		total = 0;
+		counterD = 0;
 		break;
 	case 2:
 		void Cart();
