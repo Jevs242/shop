@@ -1,12 +1,30 @@
 //Jose Velazquez
 //Shop
 
-#include "Shop.h"
+#include "shop.h"
 
 Shop::Shop()
 {
 	Welcome();
 	Menu();
+}
+
+void ClearScreen() {
+#ifdef _WIN32
+    system("cls");
+#else
+    system("clear");
+#endif
+}
+
+void Pause() {
+#ifdef _WIN32
+    system("pause");
+#else
+    std::cout << "Press Enter to continue...";
+    std::cin.ignore();
+    std::cin.get();
+#endif
 }
 
 void Shop::Welcome()
@@ -21,7 +39,7 @@ void Shop::Menu()
 		cout << "....................Menu...................." << e;
 		cout << "1.Login | 2.Create Account | 3.Exit" << e;
 		cin >> opc;
-		system("cls");
+		ClearScreen();
 
 		switch (opc)
 		{
@@ -47,7 +65,7 @@ void Shop::Login()
 
 	if (counterA < 1)
 	{
-		system("cls");
+		ClearScreen();
 		cout << "You haven't yet created an account\nCreate an account\n" << e;
 	}
 	else
@@ -57,7 +75,7 @@ void Shop::Login()
 		cout << "Enter your password" << e;
 		cin >> passwordB;
 		var = Verification();
-		system("cls");
+		ClearScreen();
 		if (var > -1)
 		{
 			ShopF();
@@ -81,7 +99,7 @@ void Shop::CreateAccount()
 		cin >> passwordA[counterA];
 		counterA++;
 	}
-	system("cls");
+	ClearScreen();
 }
 
 void Shop::Sell()
@@ -94,11 +112,11 @@ void Shop::Sell()
 		cout << "Enter a price on the product" << e;
 		cin >> priceA[counterB];
 		counterB++;
-		system("cls");
+		ClearScreen();
 	}
 	else
 	{
-		system("cls");
+		ClearScreen();
 		cout << "The maximum you can add is two products" << e;
 	}
 }
@@ -122,7 +140,7 @@ void Shop::Buy()//Compra
 		counterD++;
 	}
 	total += cartB;
-	system("cls");
+	ClearScreen();
 }
 
 void Shop::Default()
@@ -145,9 +163,9 @@ int Shop::Verification()
 
 void Shop::Exit()
 {
-	system("cls");
+	ClearScreen();
 	cout << " |Exit| \n" << "See you later!!" << e;
-	system("Pause");
+	Pause();
 	exit(1);
 }
 
@@ -172,12 +190,12 @@ void Shop::ShopF()
 			Cart();
 			break;
 		case 4:
-			system("cls");
+			ClearScreen();
 			Menu();
 			break;
 		case 5:
 			Exit();
-			system("Pause");
+			Pause();
 			break;
 		default:
 			Default();
@@ -205,19 +223,19 @@ void Shop::Cart()//Carrito de comprar
 	}
 	else
 	{
-		system("cls");
+		ClearScreen();
 		cout << "You have nothing in the cart" << e;
 		ShopF();
 	}
 	cin >> opc;
-	system("cls");
+	ClearScreen();
 	switch (opc)
 	{
 	case 1:
 
-		system("cls");
+		ClearScreen();
 		cout << "Paying...\n";
-		system("cls");
+		ClearScreen();
 		cout << "...Your payment has been successfully completed..." << e;
 		total = 0;
 		counterD = 0;
@@ -234,7 +252,7 @@ void Shop::Cart()//Carrito de comprar
 int  main()
 {
 	Shop Shop;
-	system("Pause");
+	Pause();
 	return 0;
 }
 
